@@ -1,6 +1,11 @@
-# SVG Bulk Outliner
+# SVG Bulk Converter
 
-Script to quickly outline text for all SVGs in a folder.
+Script to quickly convert all SVGs in a folder.
+
+## This is a work in progress
+Lots of credit to [kynatro](https://github.com/kynatro/svg-bulk-outliner) for about 99% of the work here.
+I was having trouble finding an easy way to loop over files in a dir with Inscape and their project helped a lot.
+I hope you find this useful. Leave a comment and maybe I'll publish it once it's cleaned up... or maybe kynatro wants to create a whole set of Inkscape utils.
 
 ## Pre-requisites
 This script uses Inkscape to process the SVG files, so it must be installed first. Download Inkscape at:
@@ -33,24 +38,17 @@ input-file3.svg
 ```
 
 ### `--cwd`
-Specify the working directory to recurse through. By default, `svg-bulk-outline` will process through the current working directory.
+Specify the working directory to recurse through. By default, `svg-bulk-convert` will process through the current working directory.
 
 ```sh
-svg-bulk-outline --cwd="~/Desktop"
+svg-bulk-convert --cwd="~/Desktop"
 ```
 
 ### `--dry-run`
 Don't actually modify the files, but show an output of what the results should look like on the set. Will not actually run `inkscape` against the files, but its useful to check that all the files you want processed are renamed properly and included in your run.
 
 ```sh
-svg-bulk-outline --dry-run
-```
-
-### `--file-prefix`
-Specify a file name prefix for output files. Will rename input files unless `--save-copy` is also specified.
-
-```sh
-svg-bulk-outline --file-prefix="foo-"
+svg-bulk-convert --dry-run
 ```
 
 #### Expected output:
@@ -59,75 +57,4 @@ svg-bulk-outline --file-prefix="foo-"
 foo-input-file1.svg
 foo-input-file2.svg
 foo-input-file3.svg
-```
-
-#### Run with `--save-copy`
-
-```sh
-svg-bulk-outline --file-prefix="foo-" --save-copy
-```
-
-#### Expected output:
-
-```sh
-input-file1.svg
-input-file2.svg
-input-file3.svg
-foo-input-file1.svg
-foo-input-file2.svg
-foo-input-file3.svg
-```
-
-### `--file-suffix`
-Specify a file name suffix for output files. Will rename output files unless `--save-copy` is also specified.
-
-```sh
-svg-bulk-outline --file-suffix="-outlined"
-```
-
-#### Expected output:
-
-```sh
-input-file1-outlined.svg
-input-file2-outlined.svg
-input-file3-outlined.svg
-```
-
-#### Run with `--save-copy`
-
-```sh
-svg-bulk-outline --file-suffix="-outlined" --save-copy
-```
-
-#### Expected output:
-
-```sh
-input-file1.svg
-input-file2.svg
-input-file3.svg
-input-file1-outlined.svg
-input-file2-outlined.svg
-input-file3-outlined.svg
-```
-
-### `--pattern`
-Specify a custom file pattern to search for. Accepts any pattern compatible with [Glob](https://github.com/isaacs/node-glob#readme). If not specified, the default file pattern is `**/*.svg`.
-
-```sh
-svg-bulk-outline --pattern="static/**/*.svg"
-```
-
-### `--save-copy`
-Save a copy of the SVG instead of overwriting the input files. If you do not specify `--file-prefix` or `--file-suffix` the output file names will automatically be suffixed with `-copy`.
-
-```sh
-svg-bulk-outline --save-copy
-```
-
-#### Expected output:
-
-```sh
-input-file1-copy.svg
-input-file2-copy.svg
-input-file3-copy.svg
 ```
