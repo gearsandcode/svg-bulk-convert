@@ -14,6 +14,7 @@
     "url": "git@github.com:gearsandcode/svg-bulk-convert.git"
   },
   "author": "Jesse Clark",
+  "contributors": ["Dave Shepard"],
   "license": "ISC",
   "dependencies": {
     "glob": "^7.1.6",
