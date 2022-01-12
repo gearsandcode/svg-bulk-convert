@@ -1,5 +1,5 @@
 {
-  "name": "svg-bulk-conver",
+  "name": "svg-bulk-convert",
   "version": "1.0.3",
   "description": "SVG bulk converter via Inkscape",
   "main": "src/outline.js",
